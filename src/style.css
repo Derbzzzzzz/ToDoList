@@ -1,7 +1,7 @@
 :root{
     --color-1: #333333;
     --color-2: #888888;
-    --color-3: #BBBBBB;
+    --color-3: #dddddd;
     --color-4: #EEEEEE;
 }
 
@@ -34,7 +34,43 @@ header{
 /* Main */
 
 main{
+    display: flex;
+
     flex-grow: 1;
+}
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    padding: 30px;
+    width: 250px;
+    font-size: 2rem;
+
+    background-color: var(--color-3);
+}
+
+.sidebar-header{
+    display: flex;
+    gap: 5px;
+
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sidebar-logo{
+    margin-top: 13px;
+}
+
+.sidebar-title{
+    font-size: 2.5rem;
+}
+
+.project-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 /* Footer */
