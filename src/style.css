@@ -1,3 +1,7 @@
+
+
+
+
 :root{
     --color-1: #333333;
     --color-2: #888888;
@@ -39,6 +43,8 @@ main{
     flex-grow: 1;
 }
 
+/* Sidebar (Project selection) */
+
 .sidebar{
     display: flex;
     flex-direction: column;
@@ -60,17 +66,66 @@ main{
 }
 
 .sidebar-logo{
-    margin-top: 13px;
+    margin-top: 5px;
+    margin-left: -2px;
+    font-size: 30px;
 }
 
 .sidebar-title{
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .project-container{
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    font-size: 1.5rem;
+}
+
+/* Main project display */
+
+.main-content{
+    padding: 30px;
+    padding-left: 50px;
+
+    flex-grow: 1;
+}
+
+.project-name{
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.todo-list{
+    padding: 20px;
+}
+
+.task{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 1.5rem;
+    padding: 10px;
+
+    border-radius: 20px;
+}
+
+.task:hover{
+    background-color: var(--color-3);
+}
+
+.task-circle{
+    cursor: pointer;
+}
+
+.task-circle:hover{
+    font-weight: bolder;
+}
+
+.task-text{
+
 }
 
 /* Footer */
