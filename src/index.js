@@ -3,6 +3,13 @@ import appendGithub from './JSFiles/image.js'
 
 appendGithub()
 
+let addProjectButton = document.querySelector('.project-add')
+
+let projectForm = document.querySelector('.project-form')
+
+let cancelButton = document.querySelector('.cancel-project')
+
+
 function createProject(projectName){
     return{
         name: projectName,
@@ -31,11 +38,26 @@ function createProjectList(){
     return projectList
 }
 
+let cancelProjectCreation = function(){
+    addProjectButton.style.display = 'flex';
+
+    projectForm.style.display = 'none';
+}
+
+let openProjectForm = function(){
+    addProjectButton.style.display = 'none';
+
+    projectForm.style.display = 'flex';
+}
+
 let projectList = createProjectList()
 
-let addProjectButton = document.querySelector('.project-add')
+addProjectButton.addEventListener('click', openProjectForm)
 
-addProjectButton.addEventListener('click', )
+cancelButton.addEventListener('click', cancelProjectCreation)
+
+
+
 
 
 
