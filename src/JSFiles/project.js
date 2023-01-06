@@ -6,17 +6,25 @@ const Project = (() => {
     function createProjectList(){
 
         let list = []
-        let defaultProject = createProject('Default Proj')
+
+        let defaultProject = {
+            name: 'Default Proj',
+            todos: [],
+        }
+
         list.push(defaultProject)
+        
         return list
 
     }
 
     function createProject(projectName){
-        return{
+        let project = {
             name: projectName,
             todos: [],
         }
+
+        appendProject(project)
     }
     
     function appendProject(project){

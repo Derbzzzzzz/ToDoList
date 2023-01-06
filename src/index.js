@@ -7,8 +7,6 @@ appendGithub()
 
 UI.activateProjectButtons()
 
-console.log(Project.projectList)
-
 
 
 
