@@ -16,25 +16,54 @@
         </header>
 
         <main>
+
             <div class="sidebar">
                 <div class="sidebar-header">
-                    <span class="material-symbols-outlined .material-icons.md-48 sidebar-logo">inbox</span>
+                    <span class="material-symbols-outlined sidebar-logo">inbox</span>
                     <div class="sidebar-title">Projects</div>
                 </div>
                 <div class="project-container">
-                    <div>Project 1</div>
-                    <div>Project 2</div>
+                    <div class="project">
+                        <span class="material-symbols-outlined plus-sign">list</span>
+                        <div class="project-name">Project 1</div>
+                    </div>
+                    <div class="project">
+                        <span class="material-symbols-outlined plus-sign">list</span>
+                        <div class="project-name">Project 2</div>
+                    </div>
+                </div>
+                <div class="project-add">
+                    <span class="material-symbols-outlined plus-sign">add</span>
+                    <div class="project-add-text">Add Project</div>
+                </div>
+                <div class="project-form">
+                    <input type="text" name="project-input" id="project-input">
+                    <div class="project-form-buttons">
+                        <div class="project-button confirm">Confirm</div>
+                        <div class="project-button cancel">Cancel</div>
+                    </div>
                 </div>
             </div>
+
             <div class="main-content">
-                <div class="project-name">Project 1</div>
+                <div class="project-title">Project 1</div>
                 <div class="todo-list">
                     <div class="task">
                         <span class="material-symbols-outlined task-circle">circle</span>
                         <div class="task-text">Task 1</div>
                         <span class="material-symbols-outlined task-x">x</span>
                     </div>
+                    <div class="task">
+                        <span class="material-symbols-outlined task-circle">circle</span>
+                        <div class="task-text">Task 2</div>
+                        <span class="material-symbols-outlined task-x">x</span>
+                    </div>
                 </div>
+                <div class="todo-add">
+                    <span class="material-symbols-outlined plus-sign">add</span>
+                    <div class="task-text">Add Task</div>
+                </div>
+                
             </div>
         </main>
 
