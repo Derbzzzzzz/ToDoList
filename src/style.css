@@ -93,6 +93,10 @@ main{
     font-weight: 600;
 }
 
+.list{
+    margin-top: 2px;
+}
+
 .project-name{
 }
 

@@ -6,7 +6,7 @@ import UI from './JSFiles/UI'
 appendGithub()
 
 UI.activateProjectButtons()
-
+UI.populateProjects()
 
 
 

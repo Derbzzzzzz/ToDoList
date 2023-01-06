@@ -8,12 +8,12 @@ const Project = (() => {
         let list = []
 
         let defaultProject = {
-            name: 'Default Proj',
+            name: 'Default',
             todos: [],
         }
 
         list.push(defaultProject)
-        
+
         return list
 
     }

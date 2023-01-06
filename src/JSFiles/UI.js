@@ -65,7 +65,8 @@ const UI = (() => {
     }
 
     return{
-        activateProjectButtons,                  
+        activateProjectButtons,
+        populateProjects,                
     }
 
 })();
