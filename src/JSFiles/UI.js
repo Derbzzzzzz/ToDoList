@@ -21,18 +21,28 @@ const UI = (() => {
 
     let addNewProject = function(){
         Project.createProject(projectInput.value)
-        
+    }
+
+    let projectFormSubmit = function(e){
+        e.preventDefault();
+        if(projectInput.value.length > 10 || projectInput.value.length < 1){
+            alert("Project names must be between 1 and 10 characters")
+            return
+        }
+        if(Project.validateProjectName(projectInput.value)){
+            alert("No duplicate oroject names are allowed")
+            return
+        }
+        addNewProject();
+        cancelProjectCreation();
+        populateProjects();
+        projectInput.value= ""
     }
 
     function activateProjectButtons(){
         addProjectButton.addEventListener('click', openProjectForm)
         cancelButton.addEventListener('click', cancelProjectCreation)
-        confirmButton.addEventListener('click', () => {
-            addNewProject();
-            cancelProjectCreation();
-            populateProjects();
-            // console.log(Project.projectList)
-        })
+        confirmButton.addEventListener('click', projectFormSubmit)
     }
 
     function emptyProjectContainer(){
@@ -64,9 +74,15 @@ const UI = (() => {
         Project.projectList.forEach(appendProject)
     }
 
+    function activateProjectSubmit(event){
+        projectForm.addEventListener("submit", projectFormSubmit)
+    }
+
     return{
         activateProjectButtons,
-        populateProjects,                
+        activateProjectSubmit,
+        populateProjects,
+        projectFormSubmit                
     }
 
 })();
