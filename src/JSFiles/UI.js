@@ -4,6 +4,7 @@ const UI = (() => {
 
     let addProjectButton = document.querySelector('.project-add')
     let projectForm = document.querySelector('.project-form')
+    let projectError = document.querySelector('.project-form-error')
     let cancelButton = document.querySelector('.cancel-project')
     let confirmButton = document.querySelector('.confirm-project')
     let projectInput = document.getElementById('project-input')
@@ -12,6 +13,7 @@ const UI = (() => {
     let cancelProjectCreation = function(){
         addProjectButton.style.display = 'flex';
         projectForm.style.display = 'none';
+        projectError.style.display = "none"
     }
     
     let openProjectForm = function(){
@@ -26,17 +28,20 @@ const UI = (() => {
     let projectFormSubmit = function(e){
         e.preventDefault();
         if(projectInput.value.length > 10 || projectInput.value.length < 1){
-            alert("Project names must be between 1 and 10 characters")
+            projectError.textContent = "Project names must be between 1 and 10 characters"
+            projectError.style.display = "block"
             return
         }
         if(Project.validateProjectName(projectInput.value)){
-            alert("No duplicate oroject names are allowed")
+            projectError.textContent = "Project names must be unique"
+            projectError.style.display = "block"
             return
         }
         addNewProject();
         cancelProjectCreation();
         populateProjects();
         projectInput.value= ""
+        projectError.style.display = "none"
     }
 
     function activateProjectButtons(){
@@ -78,11 +83,20 @@ const UI = (() => {
         projectForm.addEventListener("submit", projectFormSubmit)
     }
 
+    function projectClickLogic(projectParent){
+        // Function that makes clicked project active and others unactive
+        // Function that populates main content with ToDos
+    }
+
+    function activateProject(projectParent){
+        Project.projectList.forEach(project => (project.closest('.project')).classList.remove("active"))
+        projectParent.classList.add("active")
+    }
+
     return{
         activateProjectButtons,
         activateProjectSubmit,
-        populateProjects,
-        projectFormSubmit                
+        populateProjects,             
     }
 
 })();
