@@ -9,6 +9,8 @@ const UI = (() => {
     let confirmButton = document.querySelector('.confirm-project')
     let projectInput = document.getElementById('project-input')
     let projectContainer = document.querySelector('.project-container')
+    let projectTitle = document.querySelector('.project-title')
+    let todoList = document.querySelector(".todo-list")
 
     let cancelProjectCreation = function(){
         addProjectButton.style.display = 'flex';
@@ -39,7 +41,7 @@ const UI = (() => {
         }
         addNewProject();
         cancelProjectCreation();
-        populateProjects();
+        appendProject(Project.projectList.at(-1))
         projectInput.value= ""
         projectError.style.display = "none"
     }
@@ -51,21 +53,40 @@ const UI = (() => {
     }
 
     function emptyProjectContainer(){
-        projectContainer.innerHTML = "";
+        while(projectContainer.firstChild){
+            projectContainer.removeChild(projectContainer.firstChild)
+        }
     }
 
-    function appendProject(project){
+    function createProjectElement(){
         let projectElement = document.createElement("div")
         projectElement.classList.add('project')
+        projectClickLogic(projectElement)
 
+        return projectElement
+    }
+
+    function createProjectListElement(){
         let list = document.createElement("span")
         list.classList.add('material-symbols-outlined')
         list.classList.add('list')
         list.textContent = 'list'
 
+        return list
+    }
+
+    function createProjectNameElement(project){
         let projectName = document.createElement("div")
         projectName.classList.add('project-name')
         projectName.textContent = project.name
+
+        return projectName
+    }
+
+    function appendProject(project){
+        let projectElement = createProjectElement()
+        let list = createProjectListElement()
+        let projectName = createProjectNameElement(project)
 
         projectElement.appendChild(list)
         projectElement.appendChild(projectName)
@@ -76,6 +97,7 @@ const UI = (() => {
 
     function populateProjects(){
         emptyProjectContainer()
+        console.log("test")
         Project.projectList.forEach(appendProject)
     }
 
@@ -83,14 +105,30 @@ const UI = (() => {
         projectForm.addEventListener("submit", projectFormSubmit)
     }
 
-    function projectClickLogic(projectParent){
-        // Function that makes clicked project active and others unactive
-        // Function that populates main content with ToDos
+    function projectClickLogic(projectElement){
+        projectElement.addEventListener("click", activateProject)
+        projectElement.addEventListener("click", displayProject)
     }
 
-    function activateProject(projectParent){
-        Project.projectList.forEach(project => (project.closest('.project')).classList.remove("active"))
-        projectParent.classList.add("active")
+    let activateProject = function(){
+        let projectElements = document.querySelectorAll(".project")
+        projectElements.forEach(project => (project.closest('.project')).classList.remove("active"))
+        console.log(this)
+        this.classList.add("active")
+    }
+
+    let displayProject = function(){
+        let projectName = this.querySelector(".project-name")
+        projectTitle.textContent = projectName.textContent
+
+        emptyToDoList()
+
+    }
+
+    function emptyToDoList(){
+        while(todoList.firstChild){
+            todoList.removeChild(todoList.firstChild)
+        }
     }
 
     return{

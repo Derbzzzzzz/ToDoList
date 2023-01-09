@@ -89,15 +89,19 @@ main{
     width: 150px;
 }
 
-.project:hover{
+/* .project:hover{
     font-weight: 600;
-}
+} */
 
 .list{
     margin-top: 2px;
 }
 
 .project-name{
+}
+
+.project.active{
+    font-weight: bold;
 }
 
 .project-add{
@@ -109,9 +113,9 @@ main{
     margin-top: 20px;
 }
 
-.project-add:hover{
+/* .project-add:hover{
     font-weight: 600;
-}
+} */
 
 /* Hidden/Pop-up Project Form */
 
