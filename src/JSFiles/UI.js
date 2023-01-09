@@ -1,4 +1,5 @@
 import Project from "./project";
+import Create from "./create";
 
 const UI = (() => {
 
@@ -58,35 +59,11 @@ const UI = (() => {
         }
     }
 
-    function createProjectElement(){
-        let projectElement = document.createElement("div")
-        projectElement.classList.add('project')
-        projectClickLogic(projectElement)
-
-        return projectElement
-    }
-
-    function createProjectListElement(){
-        let list = document.createElement("span")
-        list.classList.add('material-symbols-outlined')
-        list.classList.add('list')
-        list.textContent = 'list'
-
-        return list
-    }
-
-    function createProjectNameElement(project){
-        let projectName = document.createElement("div")
-        projectName.classList.add('project-name')
-        projectName.textContent = project.name
-
-        return projectName
-    }
-
     function appendProject(project){
-        let projectElement = createProjectElement()
-        let list = createProjectListElement()
-        let projectName = createProjectNameElement(project)
+        let projectElement = Create.projectElement()
+        projectClickLogic(projectElement)
+        let list = Create.projectListElement()
+        let projectName = Create.projectNameElement(project)
 
         projectElement.appendChild(list)
         projectElement.appendChild(projectName)
@@ -128,22 +105,10 @@ const UI = (() => {
     }
 
     let appendTodo = function(todo){
-        let task = document.createElement("div")
-        task.classList.add("task")
-
-        let circle = document.createElement("span")
-        circle.classList.add('material-symbols-outlined')
-        circle.classList.add('circle')
-        circle.textContent = 'circle'
-
-        let taskText = document.createElement("div")
-        taskText.classList.add("task-text")
-        taskText.textContent = todo.name
-
-        let x = document.createElement("span")
-        x.classList.add('material-symbols-outlined')
-        x.classList.add('task-x')
-        x.textContent = 'x'
+        let task = Create.taskElement()
+        let circle = Create.taskCircleElement()
+        let taskText = Create.taskTextElement(todo)
+        let x = Create.taskXElement()
 
         task.appendChild(circle)
         task.appendChild(taskText)
@@ -151,10 +116,6 @@ const UI = (() => {
 
         todoList.appendChild(task)
     }
-
-    // function returnProject(project){
-    //     return project.name = 
-    // }
 
     function emptyToDoList(){
         while(todoList.firstChild){
