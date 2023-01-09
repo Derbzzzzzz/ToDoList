@@ -97,7 +97,6 @@ const UI = (() => {
 
     function populateProjects(){
         emptyProjectContainer()
-        console.log("test")
         Project.projectList.forEach(appendProject)
     }
 
@@ -113,17 +112,49 @@ const UI = (() => {
     let activateProject = function(){
         let projectElements = document.querySelectorAll(".project")
         projectElements.forEach(project => (project.closest('.project')).classList.remove("active"))
-        console.log(this)
         this.classList.add("active")
     }
 
     let displayProject = function(){
-        let projectName = this.querySelector(".project-name")
-        projectTitle.textContent = projectName.textContent
+        let projectName = this.querySelector(".project-name").textContent
+        projectTitle.textContent = projectName
 
         emptyToDoList()
 
+        let activeProject = Project.projectList.find(element => element.name == projectName)
+
+        activeProject.todos.forEach(appendTodo)
+
     }
+
+    let appendTodo = function(todo){
+        let task = document.createElement("div")
+        task.classList.add("task")
+
+        let circle = document.createElement("span")
+        circle.classList.add('material-symbols-outlined')
+        circle.classList.add('circle')
+        circle.textContent = 'circle'
+
+        let taskText = document.createElement("div")
+        taskText.classList.add("task-text")
+        taskText.textContent = todo.name
+
+        let x = document.createElement("span")
+        x.classList.add('material-symbols-outlined')
+        x.classList.add('task-x')
+        x.textContent = 'x'
+
+        task.appendChild(circle)
+        task.appendChild(taskText)
+        task.appendChild(x)
+
+        todoList.appendChild(task)
+    }
+
+    // function returnProject(project){
+    //     return project.name = 
+    // }
 
     function emptyToDoList(){
         while(todoList.firstChild){
