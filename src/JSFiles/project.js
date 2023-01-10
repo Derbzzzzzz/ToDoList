@@ -1,5 +1,3 @@
-import ToDo from "./todo";
-
 
 const Project = (() => {
 
@@ -9,12 +7,10 @@ const Project = (() => {
 
         let list = []
 
-        let defaultProject = {
-            name: 'Default',
-            todos: [ToDo.createToDo("Take Out Trash", "", "", ""), ToDo.createToDo("Make Dinner", "", "", "")],
-        }
+        // let defaultProject = createProject("Default")
 
-        list.push(defaultProject)
+        // createTodo("Take Out Trash", defaultProject)
+        // createTodo("Make Dinner", defaultProject)
 
         return list
     }
@@ -30,17 +26,42 @@ const Project = (() => {
         }
 
         appendProject(project)
+
+        return project
     }
     
     function appendProject(project){
         projectList.push(project)
     }
 
+    function createTodo(ToDoName, project){
+        console.log(ToDoName)
+        let todo = {
+            name: ToDoName,
+            // desc: description,
+            // dueDate: date,
+            // priority: prio
+        }
+
+        console.log(todo)
+
+        appendTodo(todo, project)
+    }
+
+    function appendTodo(todo, project){
+        project.todos.push(todo)
+    }
+
+    function validateTodoName(projectName, activeProject){
+        return activeProject.todos.some(e => e.name === projectName)
+    }
+
     return{
         projectList,
         createProject,
-        appendProject,
-        validateProjectName
+        createTodo,
+        validateProjectName,
+        validateTodoName
     }
 
 })();

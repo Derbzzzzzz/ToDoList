@@ -55,7 +55,7 @@ main{
 }
 
 .todo-add{
-    display: flex;
+    display: none;
     align-items: center;
     gap: 10px;
 
@@ -72,7 +72,7 @@ main{
 }
 
 .todo-form{
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 10px;
 
@@ -93,7 +93,7 @@ main{
 }
 
 .todo-form-error{
-    display: block;
+    display: none;
 
     padding: 5px;
     text-align: center;

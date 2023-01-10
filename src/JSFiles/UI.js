@@ -13,9 +13,14 @@ const UI = (() => {
     let projectTitle = document.querySelector('.project-title')
 
     let todoList = document.querySelector(".todo-list")
-    let addTodoButton = document.querySelector('.project-add')
+    let addTodoButton = document.querySelector('.todo-add')
     let cancelTodoButton = document.querySelector('.cancel-todo')
     let confirmTodoButton = document.querySelector('.confirm-todo')
+    let todoForm = document.querySelector('.todo-form')
+    let todoError = document.querySelector('.todo-form-error')
+    let todoInput = document.getElementById('todo-input')
+
+    let activeProject = 5;
 
     let cancelProjectCreation = function(){
         addProjectButton.style.display = 'flex';
@@ -102,9 +107,11 @@ const UI = (() => {
 
         emptyToDoList()
 
-        let activeProject = Project.projectList.find(element => element.name == projectName)
+        activeProject = Project.projectList.find(element => element.name == projectName)
 
         activeProject.todos.forEach(appendTodo)
+
+        addTodoButton.style.display = "flex"
 
     }
 
@@ -127,16 +134,61 @@ const UI = (() => {
         }
     }
 
+    let openTodoForm = function(){
+        addTodoButton.style.display = 'none';
+        todoForm.style.display = 'flex';
+    }
+
+    let cancelTodoCreation = function(){
+        addTodoButton.style.display = 'flex';
+        todoForm.style.display = 'none';
+        todoError.style.display = "none"
+    }
+
+    let addNewTodo = function(){
+        Project.createTodo(todoInput.value, activeProject)
+        console.log(activeProject)
+    }
+
+    let todoFormSubmit = function(e){
+        e.preventDefault();
+        if(todoInput.value.length > 20 || todoInput.value.length < 1){
+            todoError.textContent = "Todo names must be between 1 and 20 characters"
+            todoError.style.display = "block"
+            return
+        }
+        if(Project.validateTodoName(todoInput.value, activeProject)){
+            todoError.textContent = "Todo names must be unique"
+            todoError.style.display = "block"
+            return
+        }
+        addNewTodo();
+        cancelTodoCreation();
+        appendTodo(activeProject.todos.at(-1))
+        todoInput.value= ""
+        todoError.style.display = "none"
+    }
+
     function activateTodoButtons(){
-        addTodoButton.addEventListener('click', openProjectForm)
-        cancelTodoButton.addEventListener('click', cancelProjectCreation)
-        confirmTodoButton.addEventListener('click', projectFormSubmit)
+        addTodoButton.addEventListener('click', openTodoForm)
+        cancelTodoButton.addEventListener('click', cancelTodoCreation)
+        confirmTodoButton.addEventListener('click', todoFormSubmit)
+    }
+
+    function activateTodoSubmit(event){
+        todoForm.addEventListener("submit", todoFormSubmit)
+    }
+
+    function PageLoad(){
+        activateProjectButtons()
+        activateProjectSubmit()
+        populateProjects()
+        activateTodoButtons()
+        activateTodoSubmit() 
     }
 
     return{
-        activateProjectButtons,
-        activateProjectSubmit,
-        populateProjects,             
+        PageLoad      
     }
 
 })();
