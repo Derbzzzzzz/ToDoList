@@ -1,6 +1,7 @@
-import './style.css';
+import './css/skeleton.css'
+import './css/sidebar.css'
+import './css/main.css'
 import appendGithub from './JSFiles/image.js'
-// import Project from './JSFiles/project'
 import UI from './JSFiles/UI'
 
 appendGithub()

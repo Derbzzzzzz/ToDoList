@@ -6,12 +6,16 @@ const UI = (() => {
     let addProjectButton = document.querySelector('.project-add')
     let projectForm = document.querySelector('.project-form')
     let projectError = document.querySelector('.project-form-error')
-    let cancelButton = document.querySelector('.cancel-project')
-    let confirmButton = document.querySelector('.confirm-project')
+    let cancelProjectButton = document.querySelector('.cancel-project')
+    let confirmProjectButton = document.querySelector('.confirm-project')
     let projectInput = document.getElementById('project-input')
     let projectContainer = document.querySelector('.project-container')
     let projectTitle = document.querySelector('.project-title')
+
     let todoList = document.querySelector(".todo-list")
+    let addTodoButton = document.querySelector('.project-add')
+    let cancelTodoButton = document.querySelector('.cancel-todo')
+    let confirmTodoButton = document.querySelector('.confirm-todo')
 
     let cancelProjectCreation = function(){
         addProjectButton.style.display = 'flex';
@@ -49,8 +53,8 @@ const UI = (() => {
 
     function activateProjectButtons(){
         addProjectButton.addEventListener('click', openProjectForm)
-        cancelButton.addEventListener('click', cancelProjectCreation)
-        confirmButton.addEventListener('click', projectFormSubmit)
+        cancelProjectButton.addEventListener('click', cancelProjectCreation)
+        confirmProjectButton.addEventListener('click', projectFormSubmit)
     }
 
     function emptyProjectContainer(){
@@ -121,6 +125,12 @@ const UI = (() => {
         while(todoList.firstChild){
             todoList.removeChild(todoList.firstChild)
         }
+    }
+
+    function activateTodoButtons(){
+        addTodoButton.addEventListener('click', openProjectForm)
+        cancelTodoButton.addEventListener('click', cancelProjectCreation)
+        confirmTodoButton.addEventListener('click', projectFormSubmit)
     }
 
     return{
