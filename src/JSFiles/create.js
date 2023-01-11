@@ -1,5 +1,12 @@
 const Create = (() => {
 
+    function projectWrapperElement(){
+        let projectWrapper = document.createElement("div")
+        projectWrapper.classList.add('project-wrapper')
+
+        return projectWrapper
+    }
+
     function projectElement(){
         let projectElement = document.createElement("div")
         projectElement.classList.add('project')
@@ -22,6 +29,15 @@ const Create = (() => {
         projectName.textContent = project.name
 
         return projectName
+    }
+
+    function projectXElement(){
+        let x = document.createElement("span")
+        x.classList.add('material-symbols-outlined')
+        x.classList.add('project-x')
+        x.textContent = 'x'
+
+        return x
     }
 
     function taskElement(){
@@ -57,12 +73,14 @@ const Create = (() => {
         return x
     }
 
-    
+
 
     return{
+        projectWrapperElement,
         projectElement,
         projectListElement,
         projectNameElement,
+        projectXElement,
         taskElement,
         taskCircleElement,
         taskTextElement,

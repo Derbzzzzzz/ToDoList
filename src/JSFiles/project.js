@@ -34,6 +34,12 @@ const Project = (() => {
         projectList.push(project)
     }
 
+    function removeProject(project){
+        projectList = projectList.filter(function(el) {return el != project})
+        
+        return projectList
+    }
+
     function createTodo(ToDoName, project){
         
         let todo = {
@@ -57,6 +63,7 @@ const Project = (() => {
     return{
         projectList,
         createProject,
+        removeProject,
         createTodo,
         validateProjectName,
         validateTodoName

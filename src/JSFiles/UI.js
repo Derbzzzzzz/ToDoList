@@ -69,15 +69,35 @@ const UI = (() => {
     }
 
     function appendProject(project){
+        let projectWrapper = Create.projectWrapperElement()
         let projectElement = Create.projectElement()
         projectClickLogic(projectElement)
         let list = Create.projectListElement()
         let projectName = Create.projectNameElement(project)
+        let x = Create.projectXElement()
+        x.addEventListener("click", function(){
+            removeProjectfromProjectList(project)
+            removeProjectfromDOM(projectWrapper)
+            if(projectTitle.textContent == project.name ){
+            }
+        })
 
         projectElement.appendChild(list)
         projectElement.appendChild(projectName)
 
-        projectContainer.appendChild(projectElement)
+        projectWrapper.appendChild(projectElement)
+        projectWrapper.appendChild(x)
+
+        projectContainer.appendChild(projectWrapper)
+
+    }
+
+    let removeProjectfromProjectList = function(project){
+        Project.projectList = Project.removeProject(project)
+    }
+
+    let removeProjectfromDOM = function(projectWrapper){
+        projectWrapper.parentNode.removeChild(projectWrapper)
 
     }
 
