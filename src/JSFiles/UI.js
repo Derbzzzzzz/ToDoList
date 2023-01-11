@@ -120,12 +120,28 @@ const UI = (() => {
         let circle = Create.taskCircleElement()
         let taskText = Create.taskTextElement(todo)
         let x = Create.taskXElement()
+        x.addEventListener("click", function(){
+            removeTodoFromProject(todo)
+            removeTodoFromDOM(x)
+            console.log(activeProject)
+            console.log(activeProject.todos)
+        })
 
         task.appendChild(circle)
         task.appendChild(taskText)
         task.appendChild(x)
 
         todoList.appendChild(task)
+    }
+
+    let removeTodoFromProject = function(todo){
+        activeProject.todos = activeProject.todos.filter(function(el) {return el != todo})
+        // console.log( activeProject.todos.filter(function(el) {return el != todo}))
+    }
+
+    let removeTodoFromDOM = function(x){
+        let task = x.closest('.task')
+        task.parentNode.removeChild(task)
     }
 
     function emptyToDoList(){
@@ -147,7 +163,7 @@ const UI = (() => {
 
     let addNewTodo = function(){
         Project.createTodo(todoInput.value, activeProject)
-        console.log(activeProject)
+        // console.log(activeProject)
     }
 
     let todoFormSubmit = function(e){

@@ -35,15 +35,13 @@ const Project = (() => {
     }
 
     function createTodo(ToDoName, project){
-        console.log(ToDoName)
+        
         let todo = {
             name: ToDoName,
             // desc: description,
             // dueDate: date,
             // priority: prio
         }
-
-        console.log(todo)
 
         appendTodo(todo, project)
     }
