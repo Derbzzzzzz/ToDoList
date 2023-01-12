@@ -78,7 +78,7 @@ const UI = (() => {
         x.addEventListener("click", function(){
             removeProjectfromProjectList(project)
             removeProjectfromDOM(projectWrapper)
-            if(projectTitle.textContent == project.name ){
+            if(projectTitle.textContent == project.name && Project.projectList.length == 0){
             }
         })
 
@@ -213,6 +213,10 @@ const UI = (() => {
 
     function activateTodoSubmit(event){
         todoForm.addEventListener("submit", todoFormSubmit)
+    }
+
+    function NoProjectScreen(){
+        
     }
 
     function PageLoad(){

@@ -1,8 +1,12 @@
-import github from '../github-mark-white.png'
+import github from '../images/github-mark-white.png'
+import cat from "../images/cats.jpeg"
 
 function appendGithub(){
-    const imageContainer = document.querySelector('.footer-github')
-    imageContainer.src = github
+    const githubImageEl = document.querySelector('.footer-github')
+    githubImageEl.src = github
+
+    const catImageEl = document.querySelector('.cat-image')
+    catImageEl.src = cat
 }
 
 export default appendGithub 
