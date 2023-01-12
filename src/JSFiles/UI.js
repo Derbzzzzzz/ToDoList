@@ -167,6 +167,7 @@ const UI = (() => {
 
     let removeTodoFromProject = function(todo){
         activeProject.todos = activeProject.todos.filter(function(el) {return el != todo})
+        Project.updateStorage()
         // console.log( activeProject.todos.filter(function(el) {return el != todo}))
     }
 

@@ -24,11 +24,12 @@ body{
 
 header{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     height: 100px;
     font-size: 50px;
+    padding-left: 30px;
     background-color: var(--color-1);
     color: var(--color-4)
 }

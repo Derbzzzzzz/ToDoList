@@ -1,3 +1,4 @@
+import Storage from "./storage";
 
 const Project = (() => {
 
@@ -6,6 +7,15 @@ const Project = (() => {
     function createProjectList(){
 
         let list = []
+
+        if(localStorage.getItem("projects")){
+            list = JSON.parse(localStorage.getItem("projects"))
+        }
+
+        console.log(list)
+
+        // console.log(Storage.storageAvailable('localStorage'))
+        // console.log(JSON.parse(localStorage.getItem("projects")))
 
         // let defaultProject = createProject("Default")
 
@@ -32,11 +42,13 @@ const Project = (() => {
     
     function appendProject(project){
         projectList.push(project)
+        updateStorage()
     }
 
     function removeProject(project){
         projectList = projectList.filter(function(el) {return el != project})
-        
+        updateStorage()
+
         return projectList
     }
 
@@ -50,6 +62,7 @@ const Project = (() => {
         }
 
         appendTodo(todo, project)
+        updateStorage()
     }
 
     function appendTodo(todo, project){
@@ -60,13 +73,20 @@ const Project = (() => {
         return activeProject.todos.some(e => e.name === projectName)
     }
 
+    function updateStorage(){
+        if(Storage.storageAvailable('localStorage')){
+            localStorage.setItem("projects", JSON.stringify(projectList))
+        }
+    }
+
     return{
         projectList,
         createProject,
         removeProject,
         createTodo,
         validateProjectName,
-        validateTodoName
+        validateTodoName,
+        updateStorage
     }
 
 })();
