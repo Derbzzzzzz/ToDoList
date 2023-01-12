@@ -1,10 +1,10 @@
 import './css/skeleton.css'
 import './css/sidebar.css'
 import './css/main.css'
-import appendGithub from './JSFiles/image.js'
+import appendImages from './JSFiles/image.js'
 import UI from './JSFiles/UI'
 
-appendGithub()
+appendImages()
 
 UI.PageLoad()
 

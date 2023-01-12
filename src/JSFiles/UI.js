@@ -20,6 +20,10 @@ const UI = (() => {
     let todoError = document.querySelector('.todo-form-error')
     let todoInput = document.getElementById('todo-input')
 
+    let homeContainer = document.querySelector('.home-container')
+    let workingContainer = document.querySelector('.working-container')
+    
+
     let activeProject = 5;
 
     let cancelProjectCreation = function(){
@@ -79,6 +83,11 @@ const UI = (() => {
             removeProjectfromProjectList(project)
             removeProjectfromDOM(projectWrapper)
             if(projectTitle.textContent == project.name && Project.projectList.length == 0){
+                homeScreen()
+            } else if(projectTitle.textContent == project.name){
+                let temp = document.querySelector(".project")
+                temp.click()
+
             }
         })
 
@@ -133,6 +142,8 @@ const UI = (() => {
 
         addTodoButton.style.display = "flex"
 
+        workScreen()
+
     }
 
     let appendTodo = function(todo){
@@ -143,8 +154,8 @@ const UI = (() => {
         x.addEventListener("click", function(){
             removeTodoFromProject(todo)
             removeTodoFromDOM(x)
-            console.log(activeProject)
-            console.log(activeProject.todos)
+            // console.log(activeProject)
+            // console.log(activeProject.todos)
         })
 
         task.appendChild(circle)
@@ -215,8 +226,14 @@ const UI = (() => {
         todoForm.addEventListener("submit", todoFormSubmit)
     }
 
-    function NoProjectScreen(){
-        
+    function homeScreen(){
+        homeContainer.style.display = 'flex'
+        workingContainer.style.display = 'none'
+    }
+
+    function workScreen(){
+        homeContainer.style.display = 'none'
+        workingContainer.style.display = 'block'
     }
 
     function PageLoad(){
