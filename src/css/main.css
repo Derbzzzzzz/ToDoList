@@ -75,6 +75,20 @@ main{
     font-weight: bolder;
 }
 
+/* Priority colors */
+
+.low{
+    color: limegreen
+}
+
+.medium{
+    color: orange;
+}
+
+.high{
+    color: red;
+}
+
 .task-text{
 
 }
@@ -105,7 +119,15 @@ main{
     padding-left: 30px;
 }
 
+.todo-input-container{
+    display: flex;
+    gap: 10px;
+    height: 45px;
+}
+
 #todo-input{
+    flex-grow: 1;
+
     box-sizing: border-box;
     background-color: var(--color-3);
 
@@ -114,6 +136,26 @@ main{
 }
 
 #todo-input:focus{
+    outline: none;
+}
+
+.priority-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    height: 45px;
+}
+
+.priority-text{
+    text-align: center;
+}
+
+#priority{
+    height: 20px;
+}
+
+#priority:focus{
     outline: none;
 }
 
@@ -183,4 +225,23 @@ main{
 
 .task:hover .task-x{
     display: inline-block;
+}
+
+/* Todo Remove Button */
+
+.todo-remove{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 10px;
+    padding-left: 30px;
+
+    border-radius: 20px;
+}
+
+.todo-remove:hover{
+    background-color: var(--color-3);
 }

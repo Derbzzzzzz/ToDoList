@@ -14,11 +14,13 @@ const UI = (() => {
 
     let todoList = document.querySelector(".todo-list")
     let addTodoButton = document.querySelector('.todo-add')
+    let removeTodoButton = document.querySelector('.todo-remove')
     let cancelTodoButton = document.querySelector('.cancel-todo')
     let confirmTodoButton = document.querySelector('.confirm-todo')
     let todoForm = document.querySelector('.todo-form')
     let todoError = document.querySelector('.todo-form-error')
     let todoInput = document.getElementById('todo-input')
+    let priority = document.getElementById('priority')
 
     let homeContainer = document.querySelector('.home-container')
     let workingContainer = document.querySelector('.working-container')
@@ -61,9 +63,19 @@ const UI = (() => {
     }
 
     function activateProjectButtons(){
+        removeTodoButton.addEventListener('click', removeSelectedTodos)
         addProjectButton.addEventListener('click', openProjectForm)
         cancelProjectButton.addEventListener('click', cancelProjectCreation)
         confirmProjectButton.addEventListener('click', projectFormSubmit)
+    }
+
+    function removeSelectedTodos(){
+        let circles = document.querySelectorAll('.task-circle')
+        circles.forEach(function(circle){
+            if(circle.textContent == 'radio_button_checked'){
+                circle.nextElementSibling.nextElementSibling.click()
+            }
+        })
     }
 
     function emptyProjectContainer(){
@@ -87,7 +99,6 @@ const UI = (() => {
             } else if(projectTitle.textContent == project.name){
                 let temp = document.querySelector(".project")
                 temp.click()
-
             }
         })
 
@@ -141,14 +152,15 @@ const UI = (() => {
         activeProject.todos.forEach(appendTodo)
 
         addTodoButton.style.display = "flex"
+        removeTodoButton.style.display = "flex"
 
         workScreen()
 
     }
 
     let appendTodo = function(todo){
-        let task = Create.taskElement()
-        let circle = Create.taskCircleElement()
+        let task = Create.taskElement(todo)
+        let circle = Create.taskCircleElement(todo)
         let taskText = Create.taskTextElement(todo)
         let x = Create.taskXElement()
         x.addEventListener("click", function(){
@@ -165,11 +177,11 @@ const UI = (() => {
         todoList.appendChild(task)
     }
 
-    let removeTodoFromProject = function(todo){
-        activeProject.todos = activeProject.todos.filter(function(el) {return el != todo})
-        Project.updateStorage()
-        // console.log( activeProject.todos.filter(function(el) {return el != todo}))
-    }
+    // let removeTodoFromProject = function(todo){
+    //     activeProject.todos = activeProject.todos.filter(function(el) {return el != todo})
+    //     Project.updateStorage()
+    //     // console.log( activeProject.todos.filter(function(el) {return el != todo}))
+    // }
 
     let removeTodoFromDOM = function(x){
         let task = x.closest('.task')
@@ -184,18 +196,20 @@ const UI = (() => {
 
     let openTodoForm = function(){
         addTodoButton.style.display = 'none';
+        removeTodoButton.style.display = 'none';
         todoForm.style.display = 'flex';
     }
 
     let cancelTodoCreation = function(){
         addTodoButton.style.display = 'flex';
+        removeTodoButton.style.display = 'flex';
         todoForm.style.display = 'none';
         todoError.style.display = "none"
     }
 
     let addNewTodo = function(){
-        Project.createTodo(todoInput.value, activeProject)
-        // console.log(activeProject)
+        Project.createTodo(todoInput.value, priority.value, activeProject)
+        console.log(activeProject)
     }
 
     let todoFormSubmit = function(e){

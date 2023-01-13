@@ -12,7 +12,7 @@ const Project = (() => {
             list = JSON.parse(localStorage.getItem("projects"))
         }
 
-        console.log(list)
+        // console.log(list)
 
         // console.log(Storage.storageAvailable('localStorage'))
         // console.log(JSON.parse(localStorage.getItem("projects")))
@@ -57,13 +57,13 @@ const Project = (() => {
         updateStorage()
     }
 
-    function createTodo(ToDoName, project){
+    function createTodo(ToDoName, prio, project){
         
         let todo = {
             name: ToDoName,
             // desc: description,
             // dueDate: date,
-            // priority: prio
+            priority: prio
         }
 
         appendTodo(todo, project)

@@ -40,17 +40,19 @@ const Create = (() => {
         return x
     }
 
-    function taskElement(){
+    function taskElement(todo){
         let task = document.createElement("div")
         task.classList.add("task")
+        task.classList.add(todo.priority)
 
         return task
     }
 
-    function taskCircleElement(){
+    function taskCircleElement(todo){
         let circle = document.createElement("span")
         circle.classList.add('material-symbols-outlined')
         circle.classList.add('task-circle')
+        // circle.classList.add(todo.priority)
         circle.textContent = 'radio_button_unchecked'
         circle.addEventListener('click', function(){
             if(circle.textContent == 'radio_button_unchecked'){
