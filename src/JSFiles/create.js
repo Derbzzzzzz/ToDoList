@@ -51,7 +51,14 @@ const Create = (() => {
         let circle = document.createElement("span")
         circle.classList.add('material-symbols-outlined')
         circle.classList.add('task-circle')
-        circle.textContent = 'circle'
+        circle.textContent = 'radio_button_unchecked'
+        circle.addEventListener('click', function(){
+            if(circle.textContent == 'radio_button_unchecked'){
+                circle.textContent = 'radio_button_checked'
+            }else{
+                circle.textContent = 'radio_button_unchecked'
+            }
+        })
 
         return circle
     }

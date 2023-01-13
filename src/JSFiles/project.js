@@ -52,6 +52,11 @@ const Project = (() => {
         return projectList
     }
 
+    function removeTodo(todo, project){
+        project.todos = project.todos.filter(function(el) {return el != todo})
+        updateStorage()
+    }
+
     function createTodo(ToDoName, project){
         
         let todo = {
@@ -83,6 +88,7 @@ const Project = (() => {
         projectList,
         createProject,
         removeProject,
+        removeTodo,
         createTodo,
         validateProjectName,
         validateTodoName,

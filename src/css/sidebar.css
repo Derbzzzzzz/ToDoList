@@ -6,7 +6,8 @@
 
     box-sizing: border-box;
     padding: 30px;
-    width: 250px;
+    width: 300px;
+    min-width: 300px;
     font-size: 2rem;
 
     background-color: var(--color-3);

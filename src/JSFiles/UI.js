@@ -152,7 +152,7 @@ const UI = (() => {
         let taskText = Create.taskTextElement(todo)
         let x = Create.taskXElement()
         x.addEventListener("click", function(){
-            removeTodoFromProject(todo)
+            Project.removeTodo(todo, activeProject)
             removeTodoFromDOM(x)
             // console.log(activeProject)
             // console.log(activeProject.todos)
