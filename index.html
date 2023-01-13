@@ -75,13 +75,28 @@
                         <div class="task-text">Add Task</div>
                     </div>
                     <form action='#' class="todo-form" autocomplete="off">
-                        <input type="text" name="todo-input" id="todo-input">
+                        <div class="todo-input-container">
+                            <input type="text" name="todo-input" id="todo-input">
+                            <div class="priority-container">
+                                <div class="priority-text">Priority</div>
+                                <select name="priority" id="priority">
+                                    <option value="none" selected>None</option>
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="todo-form-error">This is Test Text This is Test Text</div>
                         <div class="todo-form-buttons">
                             <div class="todo-button confirm-todo">Confirm</div>
                             <div class="todo-button cancel-todo">Cancel</div>
                         </div>
                     </form>
+                    <div class="todo-remove">
+                        <span class="material-symbols-outlined minus-sign">delete</span>
+                        <div class="task-text">Delete Tasks</div>
+                    </div>
                 </div>
                 
             </div>
